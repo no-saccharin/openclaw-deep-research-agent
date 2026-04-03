@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "openclaw-deep-research-agent"
+version = "0.1.0"
+description = "OpenClaw Deep Research Agent - Multi-platform AI research with three-tier search"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    # CrewAI 核心
+    "crewai>=0.141.0",
+    "crewai-tools[mcp]>=0.69.0",
+    "mcp>=1.13.1",
+
+    # LLM 支持
+    "openai>=1.99.0",
+    "ollama>=0.5.3",
+
+    # 搜索工具
+    "firecrawl-py>=2.4.1",
+
+    # API 层
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.30.0",
+    "python-telegram-bot>=21.0",
+
+    # 通用
+    "keyring>=25.6.0",
+    "python-dotenv>=1.1.1",
+    "pydantic>=2.0.0",
+    "nest-asyncio>=1.6.0",
+    "httpx>=0.27.0",
+
+    # 可视化（可选）
+    "streamlit>=1.49.1",
+]
+
+[project.optional-dependencies]
+browser = [
+    "stagehand>=0.4.0",
+]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["api*", "research*"]
+namespaces = false
